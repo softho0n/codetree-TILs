@@ -17,8 +17,8 @@ dx = [-1, 0, 0, 1]
 dir_dict = {}
 dir_dict['L'] = 0
 dir_dict['R'] = 3
-dir_dict['N'] = 2
-dir_dict['S'] = 1
+dir_dict['U'] = 2
+dir_dict['D'] = 1
 
 r, c, d = sys.stdin.readline().split()
 cur_d = dir_dict[d]
