@@ -36,7 +36,7 @@ def calc(i, j, k):
         global answer
         answer = max(answer, tmp_cnt)
 
-for k in range(n):
+for k in range(n+1):
     for i in range(n):
         for j in range(n):
             calc(i, j, k)
