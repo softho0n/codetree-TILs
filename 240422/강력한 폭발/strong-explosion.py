@@ -7,17 +7,13 @@ graph = []
 for _ in range(n):
     graph.append(list(map(int, sys.stdin.readline().split())))
 
-visited = [
-    [False] * n
-    for _ in range(n)
-]
 
 bomb_cnt = 0
-
+b_pos = []
 for i in range(n):
     for j in range(n):
         if graph[i][j] == 1:
-            bomb_cnt += 1
+            b_pos.append((i, j))
         
 answer = 0
 
@@ -66,21 +62,15 @@ def calc():
     global answer
     answer = max(answer, tmp_cnt)
 
-
 def go(cnt):
-    if cnt == bomb_cnt:
+    if cnt == len(b_pos):
         calc()
         return
-    else:
-        for i in range(n):
-            for j in range(n):
-                if graph[i][j] == 1 and visited[i][j] is False:
-                    visited[i][j] = True
-                    for k in range(1, 4):
-                        b_type[i][j] = k
-                        go(cnt + 1)
-                        b_type[i][j] = 0
-                    visited[i][j] = False
+    for k in range(1, 4):
+        i, j = b_pos[cnt]
+        b_type[i][j] = k
+        go(cnt + 1)
+        b_type[i][j] = 0
 
 go(0)
 print(answer)
