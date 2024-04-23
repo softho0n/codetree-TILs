@@ -5,8 +5,8 @@ graph = []
 for _ in range(n):
     graph.append(list(map(int, sys.stdin.readline().split())))
 
-dy = [0, 0, 1, -1]
-dx = [1, 1, 0, 0]
+dy = [0, 1]
+dx = [1, 0]
 
 visited = [
     [False for _ in range(m+1)]
@@ -14,7 +14,9 @@ visited = [
 ]
 
 def dfs(sy, sx):
-    for k in range(4):
+    if sy == n - 1 and sx == m - 1:
+        return
+    for k in range(2):
         ny, nx = sy + dy[k], sx + dx[k]
 
         if ny < 0 or nx < 0 or ny >= n or nx >= m:
@@ -23,7 +25,6 @@ def dfs(sy, sx):
         if visited[ny][nx] is False and graph[ny][nx] == 1:
             visited[ny][nx] = True
             dfs(ny, nx)
-            visited[ny][nx] = False
 
 
 visited[0][0] = True
