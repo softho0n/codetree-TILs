@@ -12,18 +12,18 @@ def calc():
     global answer
     answer = max(answer, res)
 
-def go(cnt):
+def go(cnt, idx):
     if cnt == m:
         calc()
         return
     else:
-        for i in range(n):
+        for i in range(idx, n):
             if visited[i] is False:
                 visited[i] = True
                 subset.append(arr[i])
-                go(cnt + 1)
+                go(cnt + 1, i+1)
                 subset.pop()
                 visited[i] = False
 
-go(0)
+go(0, 0)
 print(answer)
