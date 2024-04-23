@@ -40,7 +40,7 @@ def dfs(y, x, k):
             dfs(ny, nx, k)
 
 candidate = []
-for k in range(1, max_v):
+for k in range(1, max_v+1):
     for i in range(n):
         for j in range(m):
             visited[i][j] = False
