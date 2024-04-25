@@ -21,7 +21,7 @@ def calc(skip_ptn):
             sx = x
     return distance
 
-answer = 1000000000
+answer = 21e8
 for i in range(1, n-1):
     answer = min(answer, calc(i))
 
