@@ -11,7 +11,7 @@ v = [
 ]
 
 y, x = 1, 1
-cur_c = 'W'
+cur_c = graph[0][0]
 route = [(0, 0)]
 answer = 0
 def dfs(yy, xx, C):
