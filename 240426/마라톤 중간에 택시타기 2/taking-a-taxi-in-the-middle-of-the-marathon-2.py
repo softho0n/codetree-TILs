@@ -8,7 +8,7 @@ for _ in range(n):
     points.append((x, y))
 
 def calc(skip_ptn):
-    sy, sx = points[0][0], points[0][0]
+    sy, sx = points[0][0], points[0][1]
 
     distance = 0
     for i in range(1, n):
