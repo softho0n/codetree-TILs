@@ -18,7 +18,8 @@ def dfs(yy, xx, C):
     for i in range(yy, r):
         for j in range(xx, c):
             if i == r - 1 and j == c - 1:
-                if len(route) == 3:
+                # print(*route)
+                if len(route) == 3 and graph[i][j] != C:
                     global answer
                     answer += 1
                 return
