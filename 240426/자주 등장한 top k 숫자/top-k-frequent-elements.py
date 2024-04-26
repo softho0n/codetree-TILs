@@ -11,8 +11,12 @@ for item in a:
     else:
         d[item] += 1
 
-b = Counter(d).most_common(k)
-b.sort(key=lambda x: (x[1], x[0]))
-b = b[::-1]
-for item in b:
-    print(item[1], end=' ')
+s = []
+for k, v in d.items():
+    s.append((k, v))
+
+s.sort(key=lambda x:(x[1], x[0]))
+s = s[::-1]
+s = s[:k]
+for item in s:
+    print(item[0], end=' ')
