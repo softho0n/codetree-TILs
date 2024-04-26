@@ -11,7 +11,7 @@ for item in a:
         d[item] += 1
         
 answer = 0
-for key, v in d.items():
+for key in set(a):
     if key == k - key:
         answer += (d[key] * d[key] - 1)
     else:
