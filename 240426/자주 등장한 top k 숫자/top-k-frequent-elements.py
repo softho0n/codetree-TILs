@@ -12,8 +12,8 @@ for item in a:
         d[item] += 1
 
 s = []
-for k, v in d.items():
-    s.append((k, v))
+for K, v in d.items():
+    s.append((K, v))
 
 s.sort(key=lambda x:(x[1], x[0]))
 s = s[::-1]
