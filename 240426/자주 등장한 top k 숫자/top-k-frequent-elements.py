@@ -12,9 +12,12 @@ for item in a:
         d[item] += 1
 
 b = Counter(d).most_common(k)
-c = []
+b.sort(key=lambda x: (-x[0], -x[1]))
 for item in b:
-    c.append(item[0])
-c.sort(reverse=True)
-for item in c:
-    print(item, end=' ')
+    print(item[0], end=' ')
+# c = []
+# for item in b:
+#     c.append(item[0])
+# c.sort(reverse=True)
+# for item in c:
+#     print(item, end=' ')
