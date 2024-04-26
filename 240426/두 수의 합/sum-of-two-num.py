@@ -1,20 +1,23 @@
-import sys
+from collections import defaultdict
 
-d = {}
-n, k = map(int, sys.stdin.readline().split())
-a = list(map(int, sys.stdin.readline().split()))
+N, K = map(int, input().split())
+arr = list(map(int, input().split()))
 
-for item in a:
-    if not item in d:
-        d[item] = 1
-    else:
-        d[item] += 1
-        
+dic = defaultdict(int)
+
+for a in arr:
+    dic[a] += 1
+
+# print(dic)
+
 answer = 0
-for key in set(a):
-    if key == k - key:
-        answer += (d[key] * d[key] - 1)
+for k in set(arr):
+    v = dic[k]
+    k2 = K-k
+    if k == k2: # 두개가 같은 수라면
+        result = v*(v-1)
     else:
-        if k - key in d:
-            answer += (d[key] * d[k - key])
-print(answer // 2)
+        result = v * dic[k2]
+    answer += result
+
+print(answer//2)
