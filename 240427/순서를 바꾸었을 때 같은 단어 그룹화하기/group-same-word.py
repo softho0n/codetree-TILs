@@ -5,8 +5,6 @@ d = {}
 
 for _ in range(n):
     s = list(sys.stdin.readline().rstrip())
-    s = set(s)
-    s = list(s)
     s.sort()
     s = ''.join(s)
 
