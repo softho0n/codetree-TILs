@@ -5,7 +5,7 @@ candy = [0] * 10001
 
 for _ in range(n):
     m, x = map(int, sys.stdin.readline().split())
-    candy[x] = m
+    candy[x] += m
 
 answer = 0
 for i in range(k, 10000-k+1):
