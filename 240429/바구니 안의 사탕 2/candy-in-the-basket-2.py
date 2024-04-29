@@ -8,7 +8,7 @@ for _ in range(n):
     candy[x] = m
 
 answer = 0
-for i in range(k, 120):
+for i in range(k, 500):
     tmp_sum = 0
     for j in range(i-k, i+k+1):
         tmp_sum += candy[j]
