@@ -19,6 +19,9 @@ for i in range(n):
                 answer += 1
                 break
         else:
+            if cnt >= m:
+                answer += 1
+                break
             cnt = 1
             prev = row[j]
     
@@ -38,6 +41,9 @@ for j in range(n):
                 answer += 1
                 break
         else:
+            if cnt >= m:
+                answer += 1
+                break
             cnt = 1
             prev = col[i]
 
