@@ -17,20 +17,31 @@ def can():
     yy = [ptn2[0], ptn2[1]]
     yy.sort()
 
+    xp1 = [ptn1[0][0], ptn1[1][0]]
+    yp1 = [ptn1[0][1], ptn1[1][1]]
+
+    xp2 = [ptn2[0][0], ptn2[1][0]]
+    yp2 = [ptn2[0][1], ptn2[1][1]]
+
+    xp1.sort()
+    yp1.sort()
+    xp2.sort()
+    yp2.sort()
+    
     v = [
         [False] * n
         for _ in range(n)
     ]
 
     s1 = 0
-    for i in range(xx[0][0], xx[1][0]+1):
-        for j in range(xx[0][1], xx[1][1]+1):
+    for i in range(xp1[0], xp1[1]+1):
+        for j in range(yp1[0], yp1[1]+1):
             v[i][j] = True
             s1 += g[i][j]
     
     s2 = 0
-    for i in range(yy[0][0], yy[1][0]+1):
-        for j in range(yy[0][1], yy[1][1]+1):
+    for i in range(xp2[0], xp2[1]+1):
+        for j in range(yp2[0], yp2[1]+1):
             if v[i][j]:
                 return False
             else:
@@ -45,20 +56,20 @@ def can():
     
 
 
-def go(cnt1, cnt2, ii, jj, kk, pp):
+def go(cnt1, cnt2):
     if cnt1 == 2 and cnt2 == 2:
         can()
         return
     else:
-        for i in range(ii, n):
-            for j in range(jj, n):
-                for k in range(kk, n):
-                    for p in range(pp, n):
+        for i in range(n):
+            for j in range(n):
+                for k in range(n):
+                    for p in range(n):
                         ptn1.append((i, j))
                         ptn2.append((k, p))
-                        go(cnt1+1, cnt2+1, i, j, k, p)
+                        go(cnt1+1, cnt2+1)
                         ptn1.pop()
                         ptn2.pop()
 
-go(0, 0, 0, 0, 0, 0)
+go(0, 0)
 print(answer)
