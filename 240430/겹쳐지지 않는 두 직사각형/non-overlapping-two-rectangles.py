@@ -37,10 +37,6 @@ def can():
                 v[i][j] = True
                 s2 += g[i][j]
     s3 = s1 + s2
-    
-    if s3 == 0:
-        print(xx, yy)
-        print(s1, s2)
     global answer
     answer = max(answer, s3)
     return True
