@@ -12,11 +12,6 @@ ptn2 = []
 answer = -10000000000
 
 def can():
-    xx = [ptn1[0], ptn1[1]]
-    xx.sort()
-    yy = [ptn2[0], ptn2[1]]
-    yy.sort()
-
     xp1 = [ptn1[0][0], ptn1[1][0]]
     yp1 = [ptn1[0][1], ptn1[1][1]]
 
@@ -48,6 +43,7 @@ def can():
                 v[i][j] = True
                 s2 += g[i][j]
     s3 = s1 + s2
+    print(s1, s2)
     global answer
     answer = max(answer, s3)
     return True
