@@ -24,7 +24,7 @@ def can():
     yp2.sort()
     
     v = [
-        [False] * n
+        [False] * m 
         for _ in range(n)
     ]
 
@@ -43,6 +43,7 @@ def can():
                 v[i][j] = True
                 s2 += g[i][j]
     s3 = s1 + s2
+    # print(s1, s2, *ptn1, *ptn2)
     global answer
     answer = max(answer, s3)
     return True
@@ -57,9 +58,9 @@ def go(cnt1, cnt2):
         return
     else:
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 for k in range(n):
-                    for p in range(n):
+                    for p in range(m):
                         ptn1.append((i, j))
                         ptn2.append((k, p))
                         go(cnt1+1, cnt2+1)
