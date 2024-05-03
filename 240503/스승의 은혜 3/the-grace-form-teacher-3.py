@@ -1,23 +1,28 @@
-N, B = map(int, input().split())
-gifts_info = [list(map(int, input().split())) for _ in range(N)]
+import sys
+n, b = map(int, sys.stdin.readline().split())
+g = []
+answer = 0
+for _ in range(n):
+    p, s = map(int, sys.stdin.readline().split())
+    g.append([p, s])
 
-max_students = 0
-for i in range(N):
-    gifts_info[i][0] //= 2
-    prices = [(gifts_info[j][0] + gifts_info[j][1]) for j in range(N)]
-    # 값이 바뀌면 안 됨
-    gifts_info[i][0] *= 2
-    prices.sort()
-
-    students, cur_prices = 0, 0
-
-    for j in range(N):
-        if cur_prices + prices[j] > B:
+for i in range(n):
+    g[i][0] = g[i][0] // 2 
+    price = [
+        g[j][0] + g[j][1]
+        for j in range(n)
+    ]
+    g[i][0] *= 2
+    price.sort()
+    
+    tmp = 0
+    cnt = 0
+    for j in range(n):
+        if tmp + price[j] <= b:
+            tmp += price[j]
+            cnt += 1
+        else:
             break
+    answer = max(answer, cnt)
 
-        cur_prices += prices[j]
-        students += 1
-
-    max_students = max(max_students, students)
-
-print(max_students)
+print(answer)
