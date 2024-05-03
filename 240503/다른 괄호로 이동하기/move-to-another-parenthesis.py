@@ -17,8 +17,8 @@ answer = 0
 for i in range(n):
     for j in range(n):
 
-        for k in range(i+1, n):
-            for p in range(j+1, n):
+        for k in range(n):
+            for p in range(n):
                 
                 INF = 100000000
                 distance = [
