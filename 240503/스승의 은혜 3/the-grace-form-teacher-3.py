@@ -11,36 +11,21 @@ for _ in range(n):
     info.append((p, s))
 answer = 0
 
-info.sort(key=lambda x: x[0])
-for i in range(n):
-    tmp = info[i][0] // 2 + info[i][1]
-    cnt = 1
-    for j in range(n):
-        if i == j:
-            continue
-        else:
-            if tmp + info[j][0] + info[j][1] <= b:
-                tmp += info[j][0]
-                tmp += info[j][1]
-                cnt += 1
-            else:
-                break
-    answer = max(answer, cnt)
+def calc(i, j):
+    total_sum = 0
+    for step in range(i, j+1):
+        total_sum += info[step][0]
+        total_sum += info[step][1]
+    return total_sum
 
-info.sort(key=lambda x: x[1])
+answer = 0
 for i in range(n):
-    tmp = info[i][0] // 2 + info[i][1]
-    cnt = 1
-    for j in range(n):
-        if i == j:
-            continue
-        else:
-            if tmp + info[j][0] + info[j][1] <= b:
-                tmp += info[j][0]
-                tmp += info[j][1]
-                cnt += 1
-            else:
-                break
-    answer = max(answer, cnt)
+    for j in range(i+1, n):
+        original_sum = calc(i, j)
+        # print(f"{i} {j} {original_sum}")
+        for k in range(i, j+1):
+            pivot = original_sum - info[k][0] // 2
+            if pivot <= b:
+                answer = max(answer, j-i+1)
 
-print(answer)
+print(answer+1)
