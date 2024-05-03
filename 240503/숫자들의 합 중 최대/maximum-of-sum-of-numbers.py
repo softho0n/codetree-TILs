@@ -6,7 +6,7 @@ answer = 0
 
 for i in range(x, y+1):
 
-    t = f"{x}"
+    t = f"{i}"
     t = list(t)
     tmp = 0
 
