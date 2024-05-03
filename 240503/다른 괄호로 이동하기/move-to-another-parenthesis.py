@@ -12,7 +12,7 @@ for _ in range(n):
 
 dy = [1, -1, 0, 0]
 dx = [0, 0, 1, -1]
-answer = -1
+answer = 0
 
 for i in range(n):
     for j in range(n):
