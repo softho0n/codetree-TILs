@@ -1,32 +1,23 @@
-import sys
+N, B = map(int, input().split())
+gifts_info = [list(map(int, input().split())) for _ in range(N)]
 
+max_students = 0
+for i in range(N):
+    gifts_info[i][0] //= 2
+    prices = [(gifts_info[j][0] + gifts_info[j][1]) for j in range(N)]
+    # 값이 바뀌면 안 됨
+    gifts_info[i][0] *= 2
+    prices.sort()
 
+    students, cur_prices = 0, 0
 
+    for j in range(N):
+        if cur_prices + prices[j] > B:
+            break
 
+        cur_prices += prices[j]
+        students += 1
 
-n, b = map(int, sys.stdin.readline().split())
-info = []
-for _ in range(n):
-    p, s = map(int, sys.stdin.readline().split())
-    info.append((p, s))
-answer = 0
+    max_students = max(max_students, students)
 
-def calc(i, j):
-    total_sum = 0
-    for step in range(i, j+1):
-        total_sum += info[step][0]
-        total_sum += info[step][1]
-    return total_sum
-
-answer = 0
-for i in range(n):
-    for j in range(i+1, n):
-        original_sum = calc(i, j)
-        # print(f"{i} {j} {original_sum}")
-        for k in range(i, j+1):
-            pivot = original_sum - info[k][0] // 2
-            if pivot <= b:
-                # print(k+1, j-i+1)
-                answer = max(answer, j-i+1)
-
-print(answer)
+print(max_students)
