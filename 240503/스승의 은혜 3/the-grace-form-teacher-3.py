@@ -26,6 +26,7 @@ for i in range(n):
         for k in range(i, j+1):
             pivot = original_sum - info[k][0] // 2
             if pivot <= b:
+                # print(k+1, j-i+1)
                 answer = max(answer, j-i+1)
 
-print(answer+1)
+print(answer)
