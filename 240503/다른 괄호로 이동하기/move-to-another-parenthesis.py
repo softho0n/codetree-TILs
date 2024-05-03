@@ -16,7 +16,7 @@ answer = 0
 
 for i in range(n):
     for j in range(n):
-        INF = 100000000
+        INF = 10000000000000
         distance = [
             [INF] * (n + 1)
             for _ in range(n + 1)
