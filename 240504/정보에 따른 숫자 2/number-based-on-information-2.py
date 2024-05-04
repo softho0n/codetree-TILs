@@ -16,7 +16,7 @@ def get_d1(x):
             distance = abs(x-i)
             d1 = min(d1, distance)
     
-    for i in range(x+1, b+1):
+    for i in range(x+1, 1020):
         if info[i] == 'S':
             distance = abs(x-i)
             d1 = min(d1, distance)
@@ -30,7 +30,7 @@ def get_d2(x):
             distance = abs(x-i)
             d2 = min(d2, distance)
     
-    for i in range(x+1, b+1):
+    for i in range(x+1, 1020):
         if info[i] == 'N':
             distance = abs(x-i)
             d2 = min(d2, distance)
