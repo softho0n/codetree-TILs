@@ -1,7 +1,7 @@
 import sys
 t, a, b = map(int, sys.stdin.readline().split())
 
-info = [''] * (b + 1)
+info = [''] * (10001)
 for _ in range(t):
     cmd = sys.stdin.readline().split()
     alpha = cmd[0]
