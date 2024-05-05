@@ -107,12 +107,11 @@ answer = 0
 def go(cnt, next_val):
     if cnt == 3:
         if calc():
-            # print(*subset)
             global answer
             answer += 1
         return
     else:
-        for i in range(next_val, max_val+1):
+        for i in range(max_val+1):
             subset.append(i)
             go(cnt + 1, i+1)
             subset.pop()
