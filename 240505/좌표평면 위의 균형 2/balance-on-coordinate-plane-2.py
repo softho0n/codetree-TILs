@@ -37,8 +37,7 @@ def calc1():
             a3 += 1
         elif x > subset[0] and y < subset[1]:
             a4 += 1
-    if a1 == 0 or a2 == 0 or a3 == 0 or a4 == 0:
-        return
+
     max_a = max(a1, a2, a3, a4)
     global answer
     answer = min(answer, max_a)
@@ -56,8 +55,6 @@ def calc2():
         elif x > subset[1] and y < subset[0]:
             a4 += 1
     
-    if a1 == 0 or a2 == 0 or a3 == 0 or a4 == 0:
-        return
     max_a = max(a1, a2, a3, a4)
     global answer
     answer = min(answer, max_a)
