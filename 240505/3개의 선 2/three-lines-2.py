@@ -30,7 +30,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c1")
+        # print("c1")
         return True
 
     # x, x, y
@@ -40,7 +40,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c2")
+        # print("c2")
         return True
 
     # x, y, x
@@ -50,7 +50,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c3")
+        # print("c3")
         return True
         
     # x, y, y
@@ -60,7 +60,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c4")
+        # print("c4")
         return True
 
     # y, x, x
@@ -70,7 +70,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c5")
+        # print("c5")
         return True
         
     # y, x, y
@@ -80,7 +80,7 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c6")
+        # print("c6")
         return True
         
     # y, y, x
@@ -90,7 +90,6 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c7")
         return True
         
     # y, y, y
@@ -100,7 +99,6 @@ def calc():
             tmp += 1
     
     if tmp == len(ptns):
-        print("c8")
         return True
     
     return False
@@ -109,7 +107,7 @@ answer = 0
 def go(cnt, next_val):
     if cnt == 3:
         if calc():
-            print(*subset)
+            # print(*subset)
             global answer
             answer += 1
         return
