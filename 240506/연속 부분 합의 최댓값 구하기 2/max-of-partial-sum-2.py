@@ -2,7 +2,7 @@ import sys
 
 n = int(input())
 a = list(map(int, sys.stdin.readline().split()))
-answer = 0
+answer = -1001
 
 
 tmp_sum = 0
