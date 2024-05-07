@@ -6,21 +6,18 @@ a.sort()
 
 answer = 0
 
+
+
 while True:
-    tmp = []
-    for i in range(0, len(a), 2):
-        if i == len(a) - 1:
-            tmp.append(a[i])
-        else:
-            tmp.append(a[i] + a[i+1])
-            answer += a[i] + a[i+1]
     
-    if len(tmp) == 1:
+    if len(a) == 1:
         break
     
-    a.clear()
-    for item in tmp:
-        a.append(item)
-    a.sort()
+    a1, a2 = a[0], a[1]
+    a3 = a1 + a2
+    answer += a3
+
+    a = a[2:]
+    a.append(a3)
 
 print(answer)
