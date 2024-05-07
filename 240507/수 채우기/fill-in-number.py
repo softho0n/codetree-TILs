@@ -1,7 +1,7 @@
 import sys
 
 n = int(input())
-INF = 100000000000
+INF = 10000000
 dp = [INF] * (n + 1)
 dp[2] = 1
 dp[4] = 2
