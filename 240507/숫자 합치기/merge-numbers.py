@@ -21,5 +21,6 @@ while True:
     a.clear()
     for item in tmp:
         a.append(item)
+    a.sort()
 
 print(answer)
