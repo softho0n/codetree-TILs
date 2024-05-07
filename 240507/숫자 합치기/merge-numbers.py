@@ -9,7 +9,6 @@ answer = 0
 
 
 while True:
-    
     if len(a) == 1:
         break
     
@@ -17,7 +16,9 @@ while True:
     a3 = a1 + a2
     answer += a3
 
-    a = a[2:]
+    a.pop(0)
+    a.pop(0)
     a.append(a3)
+    a.sort()
 
 print(answer)
