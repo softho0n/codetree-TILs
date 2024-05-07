@@ -19,6 +19,5 @@ while True:
     a.pop(0)
     a.pop(0)
     a.append(a3)
-    a.sort()
 
 print(answer)
