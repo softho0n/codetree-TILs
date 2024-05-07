@@ -14,7 +14,7 @@ while s < n and e < n:
         e = e + 1
     else:
         s = s + 1
-print(answer) 
+
 # for i in range(n):
 #     sample = a[i]
 #     for j in range(i+1, n):
