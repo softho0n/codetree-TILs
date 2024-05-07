@@ -22,4 +22,5 @@ for i in range(n):
             continue
     
     answer = max(answer, cnt)
+    break
 print(answer)
