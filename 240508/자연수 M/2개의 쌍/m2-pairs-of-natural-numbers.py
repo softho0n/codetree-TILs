@@ -3,21 +3,31 @@ import heapq
 
 n = int(sys.stdin.readline().rstrip())
 s = []
-m = 0
 
 for _ in range(n):
-    a, b = map(int, sys.stdin.readline().split())
-    if a >= 2:
-        a = 2
-    m += a
-    for _ in range(a):
-        s.append(b)
+    x, y = map(int, sys.stdin.readline().split())
+    s.append((y, x))
 
 s.sort()
-ans = 1000000001
-# print(s)
-for i in range(0, m // 2):
-    tmp_sum = s[i] + s[m-i-1]
-    ans = min(ans, tmp_sum)
+li = 0
+ri = n - 1
+
+ans = 0
+while li <= ri:
+    ly, lx = s[li]
+    ry, rx = s[ri]
+
+    ans = max(ans, ly + ry)
+
+    if lx == rx:
+        li += 1
+        ri -= 1
+    elif lx < rx:
+        # 왼쪽 갯수가 더 작다면
+        s[ri] = (ry, rx - lx) 
+        li += 1
+    elif lx > rx:
+        s[li] = (ly, lx - rx)
+        ri -= 1
 
 print(ans)
