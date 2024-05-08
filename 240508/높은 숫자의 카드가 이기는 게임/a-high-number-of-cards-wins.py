@@ -14,33 +14,28 @@ for _ in range(n):
     total_number.remove(b_num)
 
 b_nums.sort()
-total_number.sort()
+ts = set(total_number)
 answer = 0
 
-for b_num in b_nums:
-    r = bisect_right(total_number, b_num)
+for b in b_nums:
+    tb = b + 1
 
-    if r >= len(total_number):
-        continue
-    
-    item = total_number[r]
-
-    total_number.pop(r)
-
-    if item > b_num:
+    if tb in ts:
         answer += 1
+# for a, b in zip(total_number, b_nums):
+#     if a > b:
+#         answer += 1
+# for b_num in b_nums:
+#     r = bisect_right(total_number, b_num)
 
-    # print(total_number, b_num, r, item)
-    # for i in range(len(total_number)):
-    #     if total_number[i] > b_num:
-    #         answer += 1
-    #         total_number.pop(i)
-    #         break
+#     if r >= len(total_number):
+#         continue
+    
+#     item = total_number[r]
+
+#     total_number.pop(r)
+
+#     if item > b_num:
+#         answer += 1
 
 print(answer)
-
-# 1, 2, 3, 4, 5, 6
-
-# 1, 3, 4, 5, 6
-
-# 1, 3, 4, 6
