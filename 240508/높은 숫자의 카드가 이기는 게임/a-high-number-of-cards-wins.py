@@ -3,16 +3,10 @@ import heapq
 from bisect import bisect_right
 
 n = int(sys.stdin.readline().rstrip())
-total_number = []
+total_number = {i for i in range(1,(2*n)+1)}
 
-for i in range(1, 2*n + 1):
-    total_number.append(i)
-
-b_nums = []
-for _ in range(n):
-    b_num = int(sys.stdin.readline().rstrip())
-    b_nums.append(b_num)
-    total_number.remove(b_num)
+b_nums = [int(sys.stdin.readline().rstrip()) for _ in range(n)]
+total_number = list(total_number - set(b_nums))
 
 heapq.heapify(total_number)
 heapq.heapify(b_nums)
