@@ -1,40 +1,23 @@
 import sys
-
+import heapq
 n = int(input())
-info = [
-    tuple(map(int, sys.stdin.readline().split()))
-    for _ in range(n)
-]
+info = []
 
-info.sort(key=lambda x: (x[1], -x[0]))
+for _ in range(n):
+    v, w = map(int, sys.stdin.readline().split())
+    info.append((w, v))
 
+info.sort()
+idx = n - 1
+
+pq = []
 answer = 0
-second = 1
-
-# print(info)
-
-while True:
-    if len(info) == 0:
-        break
+for i in range(10001, 0, -1):
+    while idx >= 0 and info[idx][0] >= i:
+        heapq.heappush(pq, -info[idx][1])
+        idx -= 1
     
-    v, s = info[0]
-    if second <= s:
-        # print(v, s)
-        answer += v
-        info.pop(0)
-        second += 1
-    else:
-        while True:
-            nv, ns = info[0]
-            # print(nv, ns)
-            if len(info) == 0:
-                break
-
-            if second <= ns:
-                answer += nv
-                info.pop(0)
-                break
-            info.pop(0)
-        second += 1
+    if pq:
+        answer += -heapq.heappop(pq)
 
 print(answer)
