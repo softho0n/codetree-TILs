@@ -13,17 +13,14 @@ for _ in range(n):
     total_number.remove(b_num)
 
 b_nums.sort()
-
+total_number.sort()
 answer = 0
 
 for b_num in b_nums:
-
-    test_num = b_num + 1
-
     for i in range(len(total_number)):
-        if total_number[i] > test_num:
+        if total_number[i] > b_num:
             answer += 1
-            total_number.remove(test_num)
+            total_number.pop(i)
             break
 
 print(answer)
