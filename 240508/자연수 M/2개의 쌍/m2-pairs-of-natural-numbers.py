@@ -7,6 +7,8 @@ m = 0
 
 for _ in range(n):
     a, b = map(int, sys.stdin.readline().split())
+    if a >= 2:
+        a = 2
     m += a
     for _ in range(a):
         s.append(b)
