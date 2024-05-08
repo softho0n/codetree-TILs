@@ -2,7 +2,7 @@ import sys
 import heapq
 from bisect import bisect_right
 
-n = int(input())
+n = int(sys.stdin.readline().rstrip())
 total_number = []
 
 for i in range(1, 2*n + 1):
@@ -10,7 +10,7 @@ for i in range(1, 2*n + 1):
 
 b_nums = []
 for _ in range(n):
-    b_num = int(input())
+    b_num = int(sys.stdin.readline().rstrip())
     b_nums.append(b_num)
     total_number.remove(b_num)
 
