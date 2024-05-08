@@ -11,7 +11,7 @@ b_nums = []
 for _ in range(n):
     b_num = int(input())
     b_nums.append(b_num)
-    # total_number.remove(b_num)
+    total_number.remove(b_num)
 
 b_nums.sort()
 total_number.sort()
