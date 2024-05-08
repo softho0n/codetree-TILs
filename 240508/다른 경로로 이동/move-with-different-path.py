@@ -42,7 +42,9 @@ while x != n:
             continue
         if i == x:
             continue
-        
+        if g[x][i] == 0:
+            continue
+            
         if distance[x] == g[x][i] + distance[i]:
             x = i
             path.append(x)
