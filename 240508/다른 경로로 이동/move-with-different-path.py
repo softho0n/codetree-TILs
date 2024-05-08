@@ -66,7 +66,7 @@ while q:
         continue
     
     for i in range(1, n+1):
-        if (cp, i) in a_path or (i, cp) in a_path:
+        if (cp, i) in a_path:
             continue
         if g[cp][i] > 0:
             newd = cd + g[cp][i]
