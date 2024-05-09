@@ -10,4 +10,6 @@ for _ in range(m):
     lk = bisect_left(p, s)
     rk = bisect_right(p, e)
 
+    # if lk < n and rk < n:
+    #     print(s, e, lk, rk, p[lk], p[rk])
     print(rk-lk)
