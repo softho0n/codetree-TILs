@@ -3,7 +3,7 @@ from bisect import bisect_left, bisect_right
 
 n, m = map(int, sys.stdin.readline().split())
 p = list(map(int, sys.stdin.readline().split()))
-
+p.sort()
 for _ in range(m):
     s, e = map(int, sys.stdin.readline().split())
 
