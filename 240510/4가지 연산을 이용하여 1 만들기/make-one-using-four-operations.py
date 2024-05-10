@@ -7,22 +7,38 @@ import heapq
 
 
 n = int(input())
-q = []
-heapq.heappush(q, (0, n))
+v = [False] * (1000000 + 1)
+c = [0] * (1000000 + 1)
+q = deque()
+q.append(n)
+v[n] = True
+
 answer = 0
 while q:
-    cv, cp = heapq.heappop(q)
+    cp = q.popleft()
 
-    if cp == 1:
-        answer = cv
-        break
-
-    heapq.heappush(q, (cv + 1, cp + 1))
-    heapq.heappush(q, (cv + 1, cp - 1))
-
+    if cp - 1 >= 1:
+        if v[cp - 1] is False:
+            v[cp - 1] = True
+            q.append(cp - 1)
+            c[cp-1] = c[cp] + 1
+    
+    if cp + 1 <= 1000000:
+        if v[cp + 1] is False:
+            v[cp + 1] = True
+            q.append(cp + 1)
+            c[cp+1] = c[cp] + 1
+    
     if cp % 2 == 0:
-        heapq.heappush(q, (cv + 1, cp // 2))
+        if v[cp // 2] is False:
+            v[cp // 2] = True
+            q.append(cp // 2)
+            c[cp // 2] = c[cp] + 1
     
     if cp % 3 == 0:
-        heapq.heappush(q, (cv + 1, cp // 3))
-print(answer)
+        if v[cp // 3] is False:
+            v[cp // 3] = True
+            q.append(cp // 3)
+            c[cp // 3] = c[cp] + 1
+
+print(c[1])
