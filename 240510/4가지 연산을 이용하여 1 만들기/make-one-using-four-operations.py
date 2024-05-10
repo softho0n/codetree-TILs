@@ -7,12 +7,8 @@ import heapq
 
 
 n = int(input())
-v = [False] * (n + 1)
-c = [0] * (n + 1)
 q = []
 heapq.heappush(q, (0, n))
-v[n] = True
-
 answer = 0
 while q:
     cv, cp = heapq.heappop(q)
