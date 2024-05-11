@@ -9,9 +9,14 @@ for i in range(n):
 
 ans = 0
 
-for K, v in d.items():
-    if k-K in d:
-        tmp = v * d[k-K]
-        ans += tmp
+# for K, v in d.items():
+#     if k-K in d:
+#         tmp = v * d[k-K]
+#         ans += tmp
 
-print(ans // 2)
+for i in range(n):
+    d[a[i]] -= 1
+    target = k - a[i]
+    ans += d[target]
+
+print(ans)
