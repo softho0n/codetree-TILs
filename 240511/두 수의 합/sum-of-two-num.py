@@ -8,12 +8,6 @@ for i in range(n):
     d[a[i]] += 1
 
 ans = 0
-
-# for K, v in d.items():
-#     if k-K in d:
-#         tmp = v * d[k-K]
-#         ans += tmp
-
 for i in range(n):
     d[a[i]] -= 1
     target = k - a[i]
