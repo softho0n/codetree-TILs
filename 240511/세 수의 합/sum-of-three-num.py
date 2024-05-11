@@ -1,9 +1,9 @@
 import sys
-n, k = map(int, sys.stdin.readline().split())
 from collections import defaultdict
-a = list(map(int, sys.stdin.readline().split()))
 
 d = defaultdict(int)
+n, k = map(int, sys.stdin.readline().split())
+a = list(map(int, sys.stdin.readline().split()))
 for item in a:
     d[item] += 1
 
@@ -15,5 +15,4 @@ for i in range(n):
         tmp = k - (a[i] + a[j])
         if tmp in d:
             ans += d[tmp]
-
 print(ans)
