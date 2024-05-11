@@ -5,7 +5,6 @@ q = []
 
 for _ in range(n):
     cmd = list(sys.stdin.readline().split())
-    print(q)
     if len(cmd) == 1:
         if cmd[0] == "size":
             print(len(q))
