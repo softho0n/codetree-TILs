@@ -4,6 +4,12 @@ import heapq
 n = int(input())
 a = list(map(int, sys.stdin.readline().split()))
 
+answer = 0
 for k in range(1, n-1):
-    a_copy = a[k:]
-    print(a_copy)
+    q = a[k:]
+    heapq.heapify(q)
+    heapq.heappop(q)
+    avg = sum(q) / len(q)
+    answer = max(answer, avg)
+
+print("{:.2f}".format(answer))
