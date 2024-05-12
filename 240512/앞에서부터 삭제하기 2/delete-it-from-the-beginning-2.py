@@ -11,7 +11,7 @@ for k in range(n-2, 0, -1):
     heapq.heappush(q, a[k])
     v = heapq.heappop(q)
 
-    avg = sum(q) / len(q)
+    avg = sum(q) / (n - (k + 1))
     answer = max(answer, avg)
     heapq.heappush(q, v)
 
