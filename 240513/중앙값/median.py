@@ -2,25 +2,29 @@ import heapq
 import sys
 
 t = int(input())
+
+def insert(item, min_h, max_h):
+    if len(min_h) == len(max_h):
+        heapq.heappush(max_h, -item)
+    else:
+        heapq.heappush(min_h, item)
+    
+    if min_h and -max_h[0] > min_h[0]:
+        max_top = -heapq.heappop(max_h)
+        min_top = heapq.heappop(min_h)
+
+        heapq.heappush(min_h, max_top)
+        heapq.heappush(max_h, -min_top)
+
 for _ in range(t):
     n = int(input())
-    q = []
-
+    
     a = list(map(int, sys.stdin.readline().split()))
-    sorted_array = []
+    max_h = []
+    min_h = []
+
     for i in range(n):
-        # heapq.heappush(q, a[i])
-
-        if i % 2 != 0:
-            continue
-        else:
-            q = a[:i+1]
-            heapq.heapify(q)
-            tmp = []
-            for k in range(i // 2):
-                v = heapq.heappop(q)
-                tmp.append(v)
-            print(q[0], end=' ')
-
-
+        insert(a[i], min_h, max_h)
+        if i % 2 == 0:
+            print(-max_h[0], end=' ')
     print()
