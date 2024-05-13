@@ -9,14 +9,13 @@ b.sort()
 
 q = []
 for i in range(n):
-    heapq.heappush(q, (a[i] + b[0], a[i], b[0], i))
+    heapq.heappush(q, (a[i] + b[0], a[i], b[0], 0))
 
 answer = 0
 for _ in range(k):
     s, x, y, idx = heapq.heappop(q)
     answer = s
-    print(answer, x, y)
-    if idx == m - 1:
+    if idx == m-1:
         continue
     heapq.heappush(q, (x + b[idx + 1], x, b[idx + 1], idx + 1))
 
