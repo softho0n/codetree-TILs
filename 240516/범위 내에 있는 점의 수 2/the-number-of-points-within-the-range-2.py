@@ -11,8 +11,11 @@ ps = [0] * (1000000 + 1)
 
 for i in range(1, 1000000 + 1):
     ps[i] = ps[i-1] + arr[i]
-    
+
 # print(ps)
 for _ in range(q):
     a, b = map(int, sys.stdin.readline().split())
-    print(ps[b] - ps[a-1])
+    if a == 0:
+        print(ps[b] - ps[0])
+    else:
+        print(ps[b] - ps[a-1])
