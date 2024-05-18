@@ -65,7 +65,7 @@ for i in range(1, 10001):
     if visited[i] and i != root and len(_in[i]) != 1:
         print(0)
         exit(0)
-        
+
 dfs_visited = [False for _ in range(10001)]
 dfs_visited[root] = True
 def go(s):
@@ -78,9 +78,9 @@ def go(s):
             exit(0)
 go(root)
 
-# for i in range(10001):
-#     if visited[i] != dfs_visited[i]:
-#         print(0)
-#         exit(0)
+for i in range(10001):
+    if visited[i] != dfs_visited[i]:
+        print(0)
+        exit(0)
 
 print(1)
