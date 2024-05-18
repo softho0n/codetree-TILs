@@ -73,9 +73,6 @@ def go(s):
         if dfs_visited[np] is False:
             dfs_visited[np] = True
             go(np)
-        else:
-            print(0)
-            exit(0)
 go(root)
 
 for i in range(10001):
