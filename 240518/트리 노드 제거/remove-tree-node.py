@@ -22,6 +22,9 @@ def go(s):
     for next_pos in childs[s]:
         go(next_pos)
 
+parent_d = parents[d]
+childs[parent_d].remove(d)
+
 go(d)
 for i in range(n):
     if len(childs[i]) == 0 and parents[i] != -2:
