@@ -18,13 +18,17 @@ d = int(input())
 answer = 0
 
 def go(s):
+    # parent_s = parents[s]
+    # if s in childs[parent_s]:
+    #     childs[parent_s].remove(s)
     parents[s] = -2
     for next_pos in childs[s]:
         go(next_pos)
 
-parent_d = parents[d]
-childs[parent_d].remove(d)
-
+parent_s = parents[d]
+if d in childs[parent_s]:
+    childs[parent_s].remove(d)
+    
 go(d)
 for i in range(n):
     if len(childs[i]) == 0 and parents[i] != -2:
