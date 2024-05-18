@@ -44,6 +44,12 @@ for _ in range(m):
     _in[b].append(a)
     out[a].append(b)
 
+    if find_parent(parent, a) != find_parent(parent, b):
+        union(parent, a, b)
+    else:
+        print(0)
+        exit(0)
+
 root_cnt = 0
 root = 0
 for i in range(1, 10001):
@@ -55,18 +61,18 @@ for i in range(1, 10001):
 if root_cnt >= 2:
     print(0)
 
-dfs_visited = [False for _ in range(10001)]
-dfs_visited[root] = True
-def go(s):
-    for np in out[s]:
-        if dfs_visited[np] is False:
-            dfs_visited[np] = True
-            go(np)
-go(root)
+# dfs_visited = [False for _ in range(10001)]
+# dfs_visited[root] = True
+# def go(s):
+#     for np in out[s]:
+#         if dfs_visited[np] is False:
+#             dfs_visited[np] = True
+#             go(np)
+# go(root)
 
-for i in range(10001):
-    if visited[i] != dfs_visited[i]:
-        print(0)
-        exit(0)
+# for i in range(10001):
+#     if visited[i] != dfs_visited[i]:
+#         print(0)
+#         exit(0)
 
 print(1)
