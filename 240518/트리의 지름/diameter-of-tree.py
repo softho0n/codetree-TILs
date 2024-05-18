@@ -21,6 +21,7 @@ max_pos = -1
 def dfs(s, distance):
     global max_distance
     global max_pos
+    # print(s, distance)
     if max_distance <= distance:
         max_distance = distance
         max_pos = s
@@ -30,7 +31,12 @@ def dfs(s, distance):
             new_distance = distance + next_val
             visited[next_pos] = True
             dfs(next_pos, new_distance)
-            visited[next_pos] = False
-
+            # visited[next_pos] = False
+visited[1] = True
 dfs(1, 0)
-print(max_distance, max_pos)
+
+visited = [False for _ in range(n+1)]
+visited[max_pos] = True
+max_distance = -1
+dfs(max_pos, 0)
+print(max_distance)
