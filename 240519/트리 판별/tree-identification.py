@@ -76,7 +76,7 @@ def go(s):
 go(root)
 
 for i in range(10001):
-    if visited[i] != dfs_visited[i]:
+    if visited[i] and not dfs_visited[i]:
         print(0)
         exit(0)
 
