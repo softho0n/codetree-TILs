@@ -11,28 +11,27 @@ for _ in range(n-1):
     edges[a].append(b)
     edges[b].append(a)
 
-leaf_nodes = []
-for i in range(1, n+1):
-    if i == 1:
-        continue
+distance = [-1 for _ in range(n+1)] 
+distance[0] = 0
+distance[1] = 0
+
+def go(s, dist):
+    visit = False
+    new_dist = dist + 1
+
+    for new_pos in edges[s]:
+        if distance[new_pos] == -1:
+            distance[new_pos] = new_dist
+            go(new_pos, new_dist)
+            visit = True
     
-    if len(edges[i]) == 1:
-        leaf_nodes.append(i)
+    if visit:
+        distance[s] = 0
 
+go(1, 0)
 total_length = 0
-def go(s, dist, visited):
-    if s in leaf_nodes:
-        global total_length
-        total_length += dist
-        
-    for next_pos in edges[s]:
-        if visited[next_pos] is False:
-            visited[next_pos] = True
-            go(next_pos, dist + 1, visited)
-
-visited = [False for _ in range(n+1)]
-visited[1] = True
-go(1, 0, visited)
+for i in range(2, n+1):
+    total_length += distance[i]
     
 if total_length % 2 == 0:
     print(0)
