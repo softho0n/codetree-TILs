@@ -20,20 +20,19 @@ for i in range(1, n+1):
         leaf_nodes.append(i)
 
 total_length = 0
-def go(s, dist, dst, visited):
-    if s == dst:
+def go(s, dist, visited):
+    if s in leaf_nodes:
         global total_length
         total_length += dist
         
     for next_pos in edges[s]:
         if visited[next_pos] is False:
             visited[next_pos] = True
-            go(next_pos, dist + 1, dst, visited)
+            go(next_pos, dist + 1, visited)
 
-for item in leaf_nodes:
-    visited = [False for _ in range(n+1)]
-    visited[1] = True
-    go(1, 0, item, visited)
+visited = [False for _ in range(n+1)]
+visited[1] = True
+go(1, 0, visited)
     
 if total_length % 2 == 0:
     print(0)
