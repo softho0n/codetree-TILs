@@ -51,6 +51,7 @@ kp = get_parent(k)
 kkp = get_parent(kp)
 if kkp == -1:
     print(0)
+    exit(0)
 
 kkp_childs = childs[kkp]
 kkp_childs = [item for item in kkp_childs if item != kp]
