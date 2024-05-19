@@ -1,6 +1,7 @@
 import sys
-sys.setrecursionlimit(10**5)
 n = int(input())
+sys.setrecursionlimit(n+10)
+
 edges = [
     []
     for _ in range(n+1)
