@@ -5,6 +5,7 @@ for _ in range(n):
     x, y = map(int, sys.stdin.readline().split())
     p.append((x, y))
 
+p.sort()
 subset = []
 
 answer = 0
@@ -13,12 +14,10 @@ def calc():
     if len(subset) == 0:
         return
     
-    subset_c = subset[::]
-    subset_c.sort()
-    x0, y0 = subset_c[0]
+    x0, y0 = subset[0]
     tmp = 1
-    for i in range(1, len(subset_c)):
-        cx, cy = subset_c[i]
+    for i in range(1, len(subset)):
+        cx, cy = subset[i]
         if y0 < cx:
             tmp += 1
             y0 = cx
