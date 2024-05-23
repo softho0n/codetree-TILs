@@ -24,9 +24,36 @@ def calc():
     global answer
     answer = max(answer, tmp)
 
+def overlap(i, j):
+    ax1, ax2 = subset[i]
+    bx1, bx2 = subset[j]
+
+    if ax1 <= bx1 and bx1 <= ax2:
+        return True
+    
+    if ax1 <= bx2 and bx2 <= ax2:
+        return True
+    
+    if bx1 <= ax1 and ax1 <= bx2:
+        return True
+    
+    if bx1 <= ax2 and ax2 <= bx2:
+        return True
+    
+    return False
+    
+def possible():
+    for i in range(len(subset)):
+        for j in range(i+1, len(subset)):
+            if overlap(i, j):
+                return False
+    return True
+
 def go(cnt, idx):
     if idx == n:
-        calc()
+        if possible():
+            global answer
+            answer = max(answer, len(subset))
         return 
 
     for i in range(idx, n):
