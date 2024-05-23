@@ -12,12 +12,25 @@ col_visited = [False for _ in range(n)]
 subset = []
 answer = 0
 def calc():
-
     tmp = 0
     for x, y in subset:
         tmp += graph[x][y]
     global answer
     answer = max(answer, tmp)
+
+def go2(row):
+    if row == n:
+        calc()
+        return
+    else:
+        for i in range(n):
+            if col_visited[i]:
+                continue
+            col_visited[i] = True
+            subset.append((row, i))
+            go2(row+1)
+            subset.pop()
+            col_visited[i] = False
 
 def go(cnt):
     if cnt == n:
@@ -39,5 +52,5 @@ def go(cnt):
                 row_visited[i] = False
                 col_visited[j] = False
 
-go(0)
+go2(0)
 print(answer)
