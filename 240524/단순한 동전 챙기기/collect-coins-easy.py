@@ -87,6 +87,8 @@ def go(cnt, idx):
             subset.append(coins[i])
             go(cnt + 1, i + 1)
             subset.pop()
-
+if len(coins) < 3:
+    print(-1)
+    exit(0)
 go(0, 0)
 print(answer)
