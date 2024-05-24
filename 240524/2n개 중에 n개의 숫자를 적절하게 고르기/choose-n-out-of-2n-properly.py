@@ -10,12 +10,11 @@ def go(cnt, idx):
         a1 = sum(list(set(a) - set(subset)))
         a2 = sum(subset)
         a3 = abs(a1 - a2)
-        print(subset)
         global answer
         answer = min(answer, a3)
         return
     else:
-        for i in range(idx, n):
+        for i in range(idx, 2*n):
             subset.append(a[i])
             go(cnt + 1, i + 1)
             subset.pop()
