@@ -17,15 +17,19 @@ def get_distance(i, j):
     return tmp
 
 def calc():
+    tmp = 0
     for i in range(len(s)):
         for j in range(i + 1, len(s)):
             distance = get_distance(i, j)
-            global answer
-            answer = min(answer, distance)
+            tmp = max(tmp, distance)
+    
+    return tmp
 
 def go(cnt, idx):
     if cnt == m:
-        calc()
+        tmp = calc()
+        global answer
+        answer = min(answer, tmp)
         return
     else:
         for i in range(idx, n):
