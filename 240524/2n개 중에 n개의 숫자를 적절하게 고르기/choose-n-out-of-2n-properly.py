@@ -12,12 +12,12 @@ def go(cnt, idx):
         a1 = sum(a1)
         a2 = sum(subset)
         a4 = sum_a - a2
-        # a5 = abs(a4 - a2)
+        a5 = abs(a4 - a2)
         # a3 = abs(a1 - a2)
 
-        # print(a1, a2, a3, subset)
+        # print(a, a2, a3, subset)
         global answer
-        answer = min(answer, a4)
+        answer = min(answer, a5)
         return
     else:
         for i in range(idx, 2*n):
