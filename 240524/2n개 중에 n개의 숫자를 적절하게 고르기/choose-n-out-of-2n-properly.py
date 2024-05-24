@@ -8,8 +8,10 @@ subset = []
 answer = 100000000
 def go(cnt, idx):
     if cnt == n:
+        a1 = [item for item in subset if not item in a]
+        a1 = sum(a1)
         a2 = sum(subset)
-        a3 = abs(sum_a - a2)
+        a3 = abs(a1 - a2)
         global answer
         answer = min(answer, a3)
         return
