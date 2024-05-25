@@ -7,8 +7,10 @@ position = [
     for _ in range(n + 1)
 ]
 
+max_h = -1
 for _ in range(m):
     a, b = map(int, sys.stdin.readline().split())
+    max_h = max(max_h, b)
     ptns.append((a, b))
     position[a].append((1, b))
     position[a+1].append((-1, b))
@@ -22,7 +24,7 @@ for i in range(1, n+1):
     cy = 0
 
     while True:
-        if cy == m:
+        if cy == max_h:
             break
 
         changed = False
@@ -34,7 +36,7 @@ for i in range(1, n+1):
                 break
         
         if not changed:
-            cy = m
+            cy = max_h
     
     first_state.append(cx)
 # print(first_state)
@@ -63,7 +65,7 @@ def play():
         cy = 0
 
         while True:
-            if cy == m:
+            if cy == max_h:
                 break
 
             changed = False
@@ -75,10 +77,11 @@ def play():
                     break
             
             if not changed:
-                cy = m
+                cy = max_h
         
         second_state.append(cx)
     
+    # print(second_state)
     return second_state
 
 
@@ -97,7 +100,7 @@ def go(cnt, idx, target):
             go(cnt + 1, i + 1, target)
             s.pop()
         
-for i in range(1, m+1):
+for i in range(0, m+1):
     go(0, 0, i)
 
 print(answer)
