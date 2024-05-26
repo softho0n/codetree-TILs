@@ -14,31 +14,37 @@ for _ in range(n-1):
 
 # 루트 노드의 조건 -> 들어오는건 없어야하고 
 # print(tree)
-max_node = -1
-max_length = -1
-for i in range(1, n + 1):
-    if len(tree[i]) > max_length:
-        max_length = len(tree[i])
-        max_node = i
 
 visited = [False for _ in range(n + 1)]
 distance = [0 for _ in range(n + 1)]
+def dfs(x, d):
+    for next_pos in tree[x]:
+        if visited[next_pos]:
+            continue
 
-def get_maximum_distance(s, d):
-    for next_pos in tree[s]:
-        if visited[next_pos] is False:
-            visited[next_pos] = True
-            distance[next_pos] = d + 1
-            get_maximum_distance(next_pos, d + 1)
+        distance[next_pos] = d + 1
+        visited[next_pos] = True
+        dfs(next_pos, d + 1)
 
+visited[1] = True
+dfs(1, 0)
+max_dist = -1
+last_idx = -1
+answer = 0
+for i in range(n + 1):
+    if distance[i] > max_dist:
+        max_dist = distance[i]
+        last_idx = i
 
-# print(max_node)
-answer = 100000000000
-# for i in range(1, n+1):
-visited = [False for _ in range(n+1)]
-visited[max_node] = True
-get_maximum_distance(max_node, 0)
-tmp_answer = max(distance)
-answer = min(answer, tmp_answer)
-# print(distance[:n+1])
-print(answer)
+answer += max_dist
+visited = [False for _ in range(n + 1)]
+distance = [0 for _ in range(n + 1)]
+dfs(last_idx, 0)
+max_dist = -1
+last_idx = -1
+for i in range(n + 1):
+    if distance[i] > max_dist:
+        max_dist = distance[i]
+        last_idx = i
+
+print((max_dist + 1) // 2)
