@@ -2,7 +2,7 @@ import sys
 import heapq
 
 
-sys.setrecursionlimit(70000)
+sys.setrecursionlimit(100000)
 n, d = map(int, sys.stdin.readline().split())
 tree = [
     []
