@@ -2,7 +2,7 @@ import sys
 
 
 
-
+sys.setrecursionlimit(70000)
 n, d = map(int, sys.stdin.readline().split())
 tree = [
     []
