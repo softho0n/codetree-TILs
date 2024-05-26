@@ -16,28 +16,32 @@ for _ in range(n-1):
 
 visited = [False for _ in range(n + 1)]
 distance = [0 for _ in range(n + 1)]
-
-def dfs(x, d):
-    for next_pos, _ in tree[x]:
+real_distance = [0 for _ in range(n + 1)]
+def dfs(x, d, rd):
+    for next_pos, next_val in tree[x]:
         if visited[next_pos]:
             continue
         
         new_dist = d + 1
+        new_rd = rd + next_val
         distance[next_pos] = new_dist
+        real_distance[next_pos] = new_rd
         visited[next_pos] = True
-        dfs(next_pos, new_dist)
+        dfs(next_pos, new_dist, new_rd)
+
 visited[2] = True
-dfs(2, 0)
+dfs(2, 0, 0)
 
 max_dist = max(distance)
 candidate = []
 
 for i in range(1, n + 1):
     if distance[i] == max_dist:
-        candidate.append(i)
+        candidate.append((real_distance[i], i))
 
+candidate.sort()
+candidate = candidate[:1]
 def dfs_v2(x, d, rd):
-
     for next_pos, next_val in tree[x]:
         if visited[next_pos]:
             continue
@@ -49,7 +53,7 @@ def dfs_v2(x, d, rd):
         dfs_v2(next_pos, next_d, next_rd)
 
 answer = 1000000
-for can in candidate:
+for _, can in candidate:
 
     visited = [False for _ in range(n + 1)]
     visited[can] = True
