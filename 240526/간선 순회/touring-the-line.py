@@ -51,6 +51,7 @@ def dfs_v2(x, d, rd):
 dfs_v2(POS, 0, 0)
 level, tmp, _ = heapq.heappop(q)
 answer = 10000000
+q.clear()
 if tmp % d == 0:
     answer = min(answer, tmp // d)
 else:
