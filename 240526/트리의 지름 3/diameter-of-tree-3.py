@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(100005)
 n = int(input())
 
 tree = [
