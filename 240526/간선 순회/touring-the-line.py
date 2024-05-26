@@ -15,73 +15,42 @@ for _ in range(n-1):
     tree[b].append((a, c))
 
 visited = [False for _ in range(n + 1)]
-q = []
-def dfs(x, d, rd):
+dist_node = [0 for _ in range(n + 1)]
+dist = [0 for _ in range(n + 1)]
+
+last_node = 0
+max_dist = (0, 0)
+
+def dfs(x):
+    global last_node, max_dist
+
     for next_pos, next_val in tree[x]:
         if visited[next_pos]:
             continue
         
-        new_dist = d + 1
-        new_rd = rd + next_val
-        
-        heapq.heappush(q, (-new_dist, new_rd, next_pos))
+        next_dist_node = dist_node[x] + 1
+        next_dist = dist[x] + next_val
         visited[next_pos] = True
-        dfs(next_pos, new_dist, new_rd)
 
-visited[2] = True
-dfs(2, 0, 0)
-visited = [False for _ in range(n + 1)]
+        dist_node[next_pos] = next_dist_node
+        dist[next_pos] = next_dist
 
-Z, A, POS = heapq.heappop(q)
-visited[POS] = True
-q.clear()
-def dfs_v2(x, d, rd):
-    for next_pos, next_val in tree[x]:
-        if visited[next_pos]:
-            continue
-        next_d = d + 1
-        next_rd = rd + next_val
-        # print(x, next_pos, rd, next_val, next_d)
-        visited[next_pos] = True
-        heapq.heappush(q, (-next_d, next_rd, next_pos))
-        # distance[next_pos] = next_d
-        # real_distance[next_pos] = next_rd
-        dfs_v2(next_pos, next_d, next_rd)
-# print(POS)
-dfs_v2(POS, 0, 0)
-level, tmp, _ = heapq.heappop(q)
-answer = 10000000
-q.clear()
-if tmp % d == 0:
-    answer = min(answer, tmp // d)
-else:
-    answer = min(answer, (tmp // d) + 1)
-    
-print(answer)
-# answer = 1000000
-# for _, can in candidate:
+        if max_dist < (next_dist_node, -next_dist):
+            max_dist = (next_dist_node, -next_dist)
+            last_node = next_pos
 
-#     visited = [False for _ in range(n + 1)]
-#     visited[can] = True
+        dfs(next_pos)
 
-#     distance = [0 for _ in range(n + 1)]
-#     real_distance = [0 for _ in range(n + 1)]
+visited[1] = True
+dfs(1)
 
-#     dfs_v2(can, 0, 0)
-
-#     second_candidate = []
-#     second_max = max(distance)
-#     for i in range(n + 1):
-#         if distance[i] == second_max:
-#             second_candidate.append(i)
-    
-#     max_length = []
-#     for sec_can in second_candidate:
-#         max_length.append(real_distance[sec_can])
-
-#     max_length.sort()
-#     tmp = max_length[0]
+for i in range(1, n + 1):
+    visited[i] = False
+    dist[i] = 0
+    dist_node[i] = 0
 
 
-#     # print(can, max_length)
-# print(answer)
+visited[last_node] = True
+dfs(last_node)
+
+print(1 + (-max_dist[1] - 1) // d)
