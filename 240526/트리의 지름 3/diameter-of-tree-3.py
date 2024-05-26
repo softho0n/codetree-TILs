@@ -14,9 +14,9 @@ visited = [
 dist = [0 for _ in range(n + 1)]
 
 for _ in range(n - 1):
-    a, b, c = map(int, sys.stdin.readline().split())
-    tree[a].append((b, c))
-    tree[b].append((a, c))
+    A, B, C = map(int, sys.stdin.readline().split())
+    tree[A].append((B, C))
+    tree[B].append((A, C))
 
 last_node = 0
 max_dist = 0
